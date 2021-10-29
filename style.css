@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap");
+
+:root {
+  /* Colors */
+  --color-bg: #001524;
+  --color-font: #56fbff;
+  --color-block: #050c09;
+  --color-h: #ff3b94;
+  --color-m: #af3dff;
+  --color-s: #a6fd29;
+  /* Font */
+  --font-family: "Zen Kurenaido";
+  --font-size: 72px;
+  /* Block Dimensions */
+  --dimension: 700px;
+  --height-block: 25px;
+  --width-hor: 12px;
+  --width-min: 8px;
+  --width-seg: 4px;
+  --top-central: 25px;
+  --width-central: 12px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family), Arial, Helvetica, sans-serif;
+}
+
+#relogio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-bg);
+}
+
+.titulo {
+  font-size: var(--font-size);
+  color: var(--color-font);
+  text-shadow: 0 0 5px var(--color-font), 0 0 15px var(--color-font);
+  animation: animaTitulo 1s ease-in-out infinite;
+}
+
+@keyframes animaTitulo {
+  0% {
+    opacity: 5%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 5%;
+  }
+}
+
+.horas {
+  position: absolute;
+  width: var(--dimension);
+  height: var(--dimension);
+  z-index: 10;
+}
+
+.horas .block {
+  position: absolute;
+  left: calc(50% - (var(--width-hor) / 2));
+  width: var(--width-hor);
+  height: var(--height-block);
+  background-color: var(--color-block);
+  border-radius: calc(var(--width-hor) / 2);
+  transform-origin: center calc(var(--dimension) / 2);
+  transform: rotate(calc(30deg * var(--i)));
+}
+
+.horas .block:last-child {
+  height: calc(var(--height-block) * 5);
+  width: var(--width-central);
+  left: calc(50% - (var(--width-central) / 2));
+  top: var(--top-central);
+}
+
+.horas .block.ativo {
+  background-color: var(--color-h);
+  box-shadow: 0 0 5px var(--color-h), 0 0 15px var(--color-h),
+    0 0 30px var(--color-h), 0 0 60px var(--color-h);
+}
+
+.minutos {
+  position: absolute;
+  width: calc(var(--dimension) - (var(--height-block) * 4));
+  height: calc(var(--dimension) - (var(--height-block) * 4));
+  z-index: 10;
+}
+
+.minutos .block {
+  position: absolute;
+  left: calc(50% - (var(--width-min) / 2));
+  width: var(--width-min);
+  height: var(--height-block);
+  background-color: var(--color-block);
+  border-radius: calc(var(--width-min) / 2);
+  transform-origin: center
+    calc((var(--dimension) - (var(--height-block) * 4)) / 2);
+  transform: rotate(calc(6deg * var(--i)));
+}
+
+.minutos .block.ativo {
+  background-color: var(--color-m);
+  box-shadow: 0 0 5px var(--color-m), 0 0 15px var(--color-m),
+    0 0 30px var(--color-m);
+}
+
+.segundos {
+  position: absolute;
+  width: calc(var(--dimension) - (var(--height-block) * 8));
+  height: calc(var(--dimension) - (var(--height-block) * 8));
+  z-index: 10;
+}
+
+.segundos .block {
+  position: absolute;
+  left: calc(50% - (var(--width-seg) / 2));
+  width: var(--width-seg);
+  height: var(--height-block);
+  background-color: var(--color-block);
+  border-radius: calc(var(--width-seg) / 2);
+  transform-origin: center
+    calc((var(--dimension) - (var(--height-block) * 8)) / 2);
+  transform: rotate(calc(6deg * var(--i)));
+}
+
+.segundos .block.ativo {
+  background-color: var(--color-s);
+  box-shadow: 0 0 5px var(--color-s), 0 0 15px var(--color-s);
+}
